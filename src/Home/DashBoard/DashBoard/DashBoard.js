@@ -124,7 +124,7 @@ function DashBoard(props) {
                         ></Calender>
                     </Grid>
                     <Grid item xs={12} sm={7}>
-                       <Apponments></Apponments>
+                       <Apponments date={date}></Apponments>
                     </Grid>
                 </Grid>
             </Typography>

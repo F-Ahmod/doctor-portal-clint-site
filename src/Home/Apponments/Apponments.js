@@ -9,12 +9,14 @@ import Paper from '@mui/material/Paper';
 import useAuth from '../UseAuth/useAuth';
 
 const Apponments = ({ date }) => {
+    console.log(date);
     const { user } = useAuth();
-    console.log(user);
+    
     const [apponments, setApponments] = useState([])
 
     useEffect(() => {
-        const url = `http://localhost:5000/appointments?email=${user.email}&date=${date}`
+     const url = `http://localhost:5000/appointments?email=${user?.email}&date=${date}`
+      
         fetch(url)
             .then(res => res.json())
             .then(data => setApponments(data));
@@ -22,7 +24,7 @@ const Apponments = ({ date }) => {
 
     return (
         <div>
-            <h2>Appointments: {apponments.length}</h2>
+            <h2>Appointments: {apponments?.length}</h2>
             <TableContainer component={Paper}>
                 <Table sx={{}} aria-label="Appointments table">
                     <TableHead>
@@ -34,7 +36,7 @@ const Apponments = ({ date }) => {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {apponments.map((row) => (
+                        {apponments?.map((row) => (
                             <TableRow
                                 key={row._id}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
